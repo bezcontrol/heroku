@@ -1,0 +1,57 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: bakla
+  Date: 15.03.2020
+  Time: 16:15
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="../resources/css/menu/normalize.css"/>
+<link rel="stylesheet" type="text/css" href="../resources/css/menu/demo.css"/>
+<link rel="stylesheet" type="text/css" href="../resources/css/menu/component.css"/>
+<script src="../resources/js/menu/modernizr.custom.js"></script>
+<div class="container">
+    <ul id="gn-menu" class="gn-menu-main">
+        <li class="gn-trigger">
+            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+            <nav class="gn-menu-wrapper">
+                <div class="gn-scroller">
+                    <ul class="gn-menu">
+                        <li class="gn-search-item">
+                            <input placeholder="Search" type="search" class="gn-search">
+                            <a class="gn-icon gn-icon-search"><span>Search</span></a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-download"
+                               href="${pageContext.request.contextPath}/service?command=allTariffs">Все тарифы</a>
+                        </li>
+                        <li><a class="gn-icon gn-icon-cog">Settings</a></li>
+                        <li><a class="gn-icon gn-icon-help">Help</a></li>
+                        <li>
+                            <a class="gn-icon gn-icon-archive">Archives</a>
+                        </li>
+                    </ul>
+                </div><!-- /gn-scroller -->
+            </nav>
+        </li>
+        <li><a href="../jsp/services.jsp">Home</a></li>
+        <c:choose>
+        <c:when test="${not empty sessionScope.user}">
+        <li style="float: right;border-right: none;border-left: 1px solid #c6d0da;"><a class="codrops-icon codrops-icon-drop"
+               href="${pageContext.request.contextPath}/authentication?command=logout"><span>Log Out</span></a>
+        <li><a class="codrops-icon codrops-icon-drop"
+               href="../jsp/cabinet.jsp"><span>Hello, ${sessionScope.user.login}</span></a>
+            </c:when>
+            <c:otherwise>
+        <li><a class="codrops-icon codrops-icon-drop" href="../index.jsp"><span>Log in</span></a>
+            </c:otherwise>
+            </c:choose>
+        </li>
+
+    </ul>
+    <script src="../resources/js/menu/classie.js"></script>
+    <script src="../resources/js/menu/gnmenu.js"></script>
+    <script src="../resources/js/menu/gnmenucreate.js"></script>
+
+</div>
+<!-- /container -->
